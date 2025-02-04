@@ -1,5 +1,3 @@
-const mongoose = require('mongoose');
-
 const resumeSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -26,38 +24,31 @@ const resumeSchema = new mongoose.Schema({
       field: String,
       year: String
     }],
+    projects: [{
+      title: String,
+      description: String,
+      technologies: [String]
+    }],
     certifications: {
       type: [mongoose.Schema.Types.Mixed],
       default: []
-    }, projects: [{
-
-      title: String,
-
-      description: String,
-
-      technologies: [String],
-      proof:String
-
-    }],
+    },
     competitiveProfiles: {
-        type: [mongoose.Schema.Types.Mixed],
-           default: [{
-            rating:String,
-            rank:String,
-            score:String,
-            link:String
-           }]
-         }
-        
+      type: [mongoose.Schema.Types.Mixed],
+      default: [{
+        rating: String,
+        rank: String,
+        score: String,
+        link: String
+      }]
+    }
   },
   atsEvaluation: {
-       atsScore: Number,
-       missingSkills: [String],
-        breakdown: { type: [mongoose.Schema.Types.Mixed], default: [] },
-        calculations: String
-      },
+    atsScore: Number,
+    missingSkills: [String],
+    breakdown: { type: [mongoose.Schema.Types.Mixed], default: [] },
+    calculations: String
+  },
   originalFileName: String,
   score: Number,
-}, { timestamps: true });
-
-module.exports = mongoose.model('Resume', resumeSchema); 
+}, { timestamps: true }); 
