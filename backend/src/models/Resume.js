@@ -30,11 +30,18 @@ const resumeSchema = new mongoose.Schema({
       type: [mongoose.Schema.Types.Mixed],
       default: []
     },
-    competitive_profiles: {
+    competitiveProfiles: {
         type: [mongoose.Schema.Types.Mixed],
-           default: []
+           default: [{
+            rating:String,
+            rank:String,
+            score:String,
+            link:String
+           }]
          }
+        
   },
+
   originalFileName: String,
   score: Number,
 }, { timestamps: true });
