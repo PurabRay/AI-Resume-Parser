@@ -29,7 +29,11 @@ const resumeSchema = new mongoose.Schema({
     certifications: {
       type: [mongoose.Schema.Types.Mixed],
       default: []
-    }
+    },
+    competitive_profiles: {
+        type: [mongoose.Schema.Types.Mixed],
+           default: []
+         }
   },
   originalFileName: String,
   score: Number,

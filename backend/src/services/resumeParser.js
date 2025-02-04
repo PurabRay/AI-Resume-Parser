@@ -30,7 +30,7 @@ async function parseResume(filePath, userId) {
       messages: [
         {
           role: "system",
-          content: "Extract key information from this resume in JSON format. Include: personal_info, skills, work_experience, education, and certifications."
+          content: "Extract key information from this resume in JSON format. The JSON output should include the keys personal_info, skills, work_experience, education, and certifications. Ensure personal_info includes fields: name, email, phone, and location (use empty strings if missing). Ensure work_experience is an array of objects where each object includes at least company, title, and duration (use empty strings for any missing details). For education, include institution, degree, field, and year if available. If a section has no data, return an empty array or an object with empty fields as appropriate.Ensure all keys use camelCase formatting: personalInfo, skills, workExperience, education, certifications, and competitiveProfiles. Do not include any markdown formatting in your output."
         },
         {
           role: "user",
