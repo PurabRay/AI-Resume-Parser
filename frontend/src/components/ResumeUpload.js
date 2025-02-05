@@ -190,6 +190,62 @@ const ResumeUpload = () => {
               {JSON.stringify(result.parsedData, null, 2)}
             </pre>
           </div>
+
+          {result.atsEvaluation.missingSkills && result.atsEvaluation.missingSkills.length > 0 && (
+            <div className="further-steps">
+              <h3>Further Steps</h3>
+              <p>To improve your profile, consider learning these missing skills:</p>
+              
+              {result.atsEvaluation.missingSkills.map((skill) => (
+                result.atsEvaluation.learningResources?.[skill] && (
+                  <div key={skill} className="skill-resources">
+                    <h4>{skill}</h4>
+                    <div className="resource-category">
+                      <h5>Basic Resources:</h5>
+                      <ul>
+                        {result.atsEvaluation.learningResources[skill].basic.map((resource, index) => (
+                          <li key={index}>
+                            <a href={resource.url} target="_blank" rel="noopener noreferrer">
+                              {resource.title}
+                            </a>
+                            {resource.description && <p>{resource.description}</p>}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <div className="resource-category">
+                      <h5>Intermediate Resources:</h5>
+                      <ul>
+                        {result.atsEvaluation.learningResources[skill].intermediate.map((resource, index) => (
+                          <li key={index}>
+                            <a href={resource.url} target="_blank" rel="noopener noreferrer">
+                              {resource.title}
+                            </a>
+                            {resource.description && <p>{resource.description}</p>}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <div className="resource-category">
+                      <h5>Advanced Resources:</h5>
+                      <ul>
+                        {result.atsEvaluation.learningResources[skill].advanced.map((resource, index) => (
+                          <li key={index}>
+                            <a href={resource.url} target="_blank" rel="noopener noreferrer">
+                              {resource.title}
+                            </a>
+                            {resource.description && <p>{resource.description}</p>}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )
+              ))}
+            </div>
+          )}
         </div>
       )}
     </div>

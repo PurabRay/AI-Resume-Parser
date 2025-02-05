@@ -193,6 +193,8 @@ After core skills are evaluated:
 #### Calculation Consolidation
 
 • Sum extra skill points as calculated (not exceeding the allotted buffer based on the formula).
+•NO EXTRA SKILL SHOULD HAVE MORE WEIGHTAGE THAN FIVE POINTS. IF THE APPLICANT HAS AN IMPRESSIVE COMPETITIVE PROFILES THEY SHOULD BE SCORED ASSIGNED POINTS ON THE BASIS OF THEIR MOST IMPRESSIVE COMPETITIVE RANKING FOR ONLY ONE PROFILE AND THIS SHOULD BE COUNTED UNDER EXTRA SKILS.
+•THE ONLY THINGS COUNTED UNDER EXTRA SKILLS SHOULD BE:COMPETITVE PARTICIPATION,genAI INVOLVEMENT, WORK ON EXTRA FRONTEND OR BACKEND FRAMEWORKS OUTSIDE OF MERN.MAXIMUM FIVE POINTS CAN BE ALLOTED TO ANY EXTRA SKILL.THE SUM OF THE POINTS ALLOTED TO EXTRA SKILLS SHOULD NOT EXCEED 10.
 • Provide a final JSON object with:
    - "atsScore": Final ATS score (integer between 0 and 100)
    - "missingSkills": Array of required skills with insufficient evidence (explicitly assign 0 points)
@@ -214,7 +216,7 @@ These instructions must be strictly followed to minimize any deviation in point 
 - Node.js (Max 40) 
 - Express.js (Max 8)  
 - MongoDB (Max 5)
-- Total = 95 (with 5-point buffer)  
+- Total = 95  
 
 ---
 
@@ -248,6 +250,7 @@ Return a JSON object with the keys:
 - missingSkills: an array of strings  
 - breakdown: an array of objects each with { skill, assignedPoints, maxPoints, reasoning }  
 - calculations: a detailed string containing the full calculation and reasoning.  
+- For each missing skill, provide learning resources categorized as basic, intermediate, and advanced (2-3 resources with URLs for each level)
 
 The final ATS score is the sum of the core score and extra skills score, capped at 100.
 
@@ -262,6 +265,12 @@ Return a JSON object with the keys:
 - missingSkills: an array of strings  
 - breakdown: an array of objects each with { skill, assignedPoints, maxPoints, reasoning }  
 - calculations: a detailed string containing the full calculation and reasoning.  
+- "learningResources": {
+    "skillName": {
+      "basic": [{"title": string, "url": string, "description": string}],
+      "intermediate": [{"title": string, "url": string, "description": string}],
+      "advanced": [{"title": string, "url": string, "description": string}]
+    }
 
 Do not include any markdown formatting in your output.`;
 
