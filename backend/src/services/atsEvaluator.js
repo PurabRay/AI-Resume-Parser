@@ -23,31 +23,132 @@ Ensure that proficiency levels are strictly categorized as follows when assignin
 
 For each core skill (React, Node.js, Express.js, MongoDB), use the following 10% gap breakdown to assign points based on the evidence found in work experience, projects, or education. Use the exact maximum points per skill as defined (React: 42, Node.js: 40, Express.js: 8, MongoDB: 5). Points must be assigned strictly within these ranges, with inference applied only as specified.
 
--- React (Max 42 Points) --
-• 0–10% (0–4.2 points): Minimal Exposure – Only theoretical knowledge (coursework, tutorials) with no practical project evidence.
-   Example: Completed a React course with no hands-on project.
-• 11–20% (4.3–8.4 points): Basic Proficiency – Evidence of a very simple project (e.g., static webpage) showing only basic component rendering.
-• 21–30% (8.5–12.6 points): Lower Intermediate – A project demonstrates fundamental React concepts (useState, props, basic event handling) without complex state management.
-• 31–40% (12.7–16.8 points): Upper Intermediate – A project showing dynamic data fetching and use of React Hooks (useEffect, useContext) with a structured architecture.
-• 41–50% (16.9–21.0 points): Moderate Advanced – Evidence of robust state management (Context API or basic Redux) and improved component reusability.
-• 51–60% (21.1–25.2 points): Advanced – Projects include performance optimizations (lazy loading, memoization) and error boundaries.
-• 61–70% (25.3–29.4 points): Very Advanced – Demonstrates near-production-level skills with modular architecture and complex component interactions.
-• 71–80% (29.5–33.6 points): Expert Intermediate – Multiple projects showing consistent high-quality usage, possibly including SSR frameworks (e.g., Next.js) in some instances.
-• 81–90% (33.7–37.8 points): Expert – Strong production-ready applications with deep performance tuning and accessibility best practices.
-• 91–100% (37.9–42 points): Mastery – Enterprise-level expertise with evidence of complex optimizations, scalable architectures, and advanced React patterns.
+• 0–10% (0–4.2 points): Minimal Exposure:
+Basic React component creation
+Understanding of component lifecycle
+Simple rendering concepts
+Limited interactivity
+• 11–20% (4.3–8.4 points): Lower Basic Proficiency:
+Multiple component interactions
+
+Basic props and state management
+Simple event handling
+Initial understanding of component structure
+• 21–30% (8.5–12.6 points): Intermediate Basic Proficiency
+useState hook proficiency
+Conditional rendering
+Basic data manipulation
+Simple form handling and validation
+• 31–40% (12.7–16.8 points): Higher Basic Proficiency
+
+useEffect for side effects
+API data fetching
+Error handling basics
+More sophisticated state logic
+Basic routing understanding
+• 41–50% (16.9–21.0 points): Lower Intermediate
+Context API implementation
+Custom hooks creation
+Component composition
+More advanced prop management
+Basic state lifting techniques
+
+• 51–60% (21.1–25.2 points): Moderate Intermediate
+Advanced hook usage
+Comprehensive error handling
+Complex state management patterns
+Basic code splitting
+Advanced component design
+• 61–70% (25.3–29.4 points): Higher Intermediate
+
+Redux or Zustand advanced implementation
+Complex state management solutions
+Advanced data flow management
+Performance tuning
+Advanced memoization techniques
+Sophisticated routing implementations
+• 71–80% (29.5–33.6 points): Lower Advanced
+Implement code splitting with React.lazy() and Suspense
+Dynamic imports for route-based splitting
+Advanced component design patterns (HOC, render props)
+Performance optimization using React.memo()
+Implement complex error boundaries
+
+Develop custom middleware for state management
+Create reusable, highly generic component libraries
+• 81–90% (33.7–37.8 points): Moderate Advanced
+Server-side rendering with Next.js or similar frameworks
+Advanced performance profiling and optimization
+Implement complex state hydration techniques
+Create custom hooks with advanced logic and memoization
+Develop micro-frontend architectures
+Advanced webpack/build configuration
+Implement advanced accessibility patterns
+Complex state synchronization across multiple components
+• 91–100% (37.9–42 points): Mastery
+Develop custom React rendering engines
+Create complex state management solutions from scratch
+Advanced performance optimization beyond standard techniques
+Implement advanced code-splitting strategies
+Create comprehensive design systems
+Develop advanced testing strategies for complex React applications
+Create custom compiler optimizations
+Implement advanced internationalization techniques
 
 -- Node.js (Max 40 Points) --
-• 0–10% (0–4 points): Minimal Exposure – Basic server setup without evidence of API development or error handling.
-   Example: A simple Node.js script returning static JSON.
-• 11–20% (4.1–8 points): Basic Proficiency – Evidence of simple API endpoints, minimal RESTful practices.
-• 21–30% (8.1–12 points): Lower Intermediate – Projects show basic API routes, basic middleware usage, and minimal database connection.
-• 31–40% (12.1–16 points): Upper Intermediate – Demonstrates working REST APIs with error handling, basic JWT authentication, and clear API structure.
-• 41–50% (16.1–20 points): Moderate Advanced – Projects include enhanced security, some asynchronous processing, or preliminary real-time features.
-• 51–60% (20.1–24 points): Advanced – Evidence of robust API handling with proper middleware, authentication, and some performance optimizations.
-• 61–70% (24.1–28 points): Very Advanced – Projects include more complex features such as real-time capabilities (e.g., WebSockets) and reliable error recovery.
-• 71–80% (28.1–32 points): Expert Intermediate – Multiple projects showing advanced error handling, middleware layering, and scalability in API design.
-• 81–90% (32.1–36 points): Expert – Production-ready systems with integrated security, efficient resource management, and thorough API documentation.
-• 91–100% (36.1–40 points): Mastery – Demonstrated through enterprise-level applications with microservices, caching strategies, and high performance under load.
+• 0–10% (0–4 points): Minimal Exposure:
+Basic Node.js server setup
+Simple routing
+
+11–20% (4.1–8 points): Lower Basic Proficiency:
+Basic Express.js routing
+Simple HTTP request handling
+Minimal error handling
+• 21–30% (8.1–12 points): Intermediate Basic Proficiency:
+Introductory async programming
+Basic middleware
+Simple database connections
+•31–40% (12.1–16 points): Higher Basic Proficiency:
+Multiple route implementations
+Comprehensive error handling
+
+•41–50% (16.1–20 points): Lower Intermediate:
+More complex routing
+
+Basic rate limiting
+Simple background job processing
+•51–60% (20.1–24 points): Moderate Intermediate:
+
+Multiple middleware strategies
+Basic authentication
+Complex middleware layering
+Advanced error logging
+ security practices
+• 61–70% (24.1–28 points): Higher Intermediate:
+More robust authentication
+Advanced authentication mechanisms
+Sophisticated NPM package integration
+Token refresh mechanisms
+Complex middleware composition
+Comprehensive logging systems
+• 71–80% (28.1–32 points): Lower Advanced:
+Advanced error recovery
+Performance optimization
+WebSocket implementation
+Advanced database query optimization
+Advanced role-based access control
+Initial microservices architecture
+Distributed system design basics
+•81–90% (32.1–36 points): Intermediate Advanced:
+Advanced security protocols
+Enterprise-level error handling
+Full microservices architecture
+Advanced system design
+Comprehensive security implementations
+• 91–100% (36.1–40 points): Mastery:
+Enterprise-level distributed systems
+Advanced architectural patterns
+Cutting-edge scalability solutions
 
 -- Express.js (Max 8 Points) --
 • 0–10% (0–0.8 points): Minimal Exposure – Basic setup of Express with simple GET routes only.
@@ -82,7 +183,7 @@ For each core skill (React, Node.js, Express.js, MongoDB), use the following 10%
 #### Extra Skill Evaluation Instructions
 After core skills are evaluated:
 • Identify extra relevant skills from the resume (e.g., PowerBI, MySQL, competitive programming ratings, etc.).
-• For each extra skill, assign extra points using the formula: Extra Skill Points = (100 - Core Score) / 5, and justify with evidence.
+• For each extra skill, assign extra points using the formula: Extra Skill Points = (100 - Core Score) / 10, and justify with evidence.A maximum of 5 points can be alloted to each Extra Skill.
 • Provide a detailed breakdown for each extra skill, including:
    - Skill name and assigned points.
    - Why it is relevant for a Full Stack Developer role.
@@ -132,7 +233,7 @@ Evaluate the level of proficiency for each skill and assign points based on the 
 
 Sum the points from the required skills to compute a core score.
 
-For any extra relevant skills not in the core set, assign additional points between 0 and (100 - core score)/5, based on their importance and relevance.
+For any extra relevant skills not in the core set, assign additional points between 0 and (100 - core score)/10, based on their importance and relevance.
 
 The final ATS score is the sum of the core score and extra skills score, capped at 100.
 
@@ -169,7 +270,7 @@ Do not include any markdown formatting in your output.`;
       messages: [
         {
           role: "system",
-          content: "You are an expert HR evaluator."
+          content: "You are an expert TechnicalHR evaluator."
         },
         {
           role: "user",
