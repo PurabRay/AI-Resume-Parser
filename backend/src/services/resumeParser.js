@@ -1,8 +1,8 @@
 const pdf = require('pdf-parse');
 const mammoth = require('mammoth');
 const fs = require('fs');
+const axios=require('axios')
 const { OpenAI } = require('openai');
-const axios = require('axios');
 const Resume = require('../models/Resume');
 const Job = require('../models/Job');
 const KRUTRIM_API_KEY = process.env.KRUTRIM_API_KEY.trim(); // Ensure this is set in your environment variables
@@ -34,7 +34,60 @@ async function parseResume(filePath, userId) {
         messages: [
           {
             role: "system",
-          content: "Extract key information from this resume IN STRICT JSON format with NO extra text, NO explanations, and NO markdown. The JSON output should include the keys personal_info, skills, work_experience, education,certifications and projects and competitiveProfiles.Ensure projects is an array of objects where each object contains the keys:title,description,skills(an array of strings) and proof.Ensure personal_info includes fields: name, email, phone, and location (If missing try to infer it from work experience first, if not found there infer it from education,if not found there assign the most suitable location deduced from the resume data). Ensure work_experience is an array of objects where each object includes at least company, title,work role or job title and send it with postion as the key and duration (use empty strings for any missing details). For education, include institution, degree, field, and year if available. If a section has no data, return an empty array or an object with empty fields as appropriate.Ensure all keys use camelCase formatting: personalInfo, skills, workExperience, education, certifications, and competitiveProfiles.Ensure competitiveProfiles includes any and all references to platforms such as LeetCode, HackerRank, Kaggle, Codeforces, and CodeChef.If a profile includes Rating,Rank or score or a link, Include it as well. Do not include any markdown formatting in your output.If the field is not mentioned under education go over the workExperience to determine the field of work of the individual and put it under field under education"
+            content: `Extract key information from this resume in JSON format.
+            MAKE SURE YOU RETURN A JSON OBJECT.DO NOT RETURN ANY MARKDOWN OR EXPLAINATIONS. 
+            The JSON output should include the keys personalInfo, skills, workExperience, education, certifications, projects, and competitiveProfiles.
+            Ensure you also have the skills displayed in work experiences but not present under skills section also present in the skills array.
+
+            Ensure projects is an array of objects where each object contains the keys: 
+            - title
+            - description
+            - skills (an array of strings)
+            - proof.
+           Ensure you also have the skills displayed in work experiences but not present under skills section also present in the skills array.
+            Ensure personalInfo includes fields: 
+            - name
+            - email
+            - phone
+            - location 
+            
+            (If missing, try to infer it from workExperience first, if not found there, infer it from education. 
+            If not found there, assign the most suitable location deduced from the resume data). 
+            
+            Ensure workExperience is an array of objects where each object includes at least: 
+            - company
+            - title (work role or job title)
+            - position (send it with this key)
+            - duration (use empty strings for any missing details).
+    
+            For education, include:
+            - institution
+            - degree
+            - field
+            - year if available. 
+    
+            If a section has no data, return an empty array or an object with empty fields as appropriate.
+    
+            Ensure all keys use camelCase formatting: 
+            - personalInfo
+            - skills
+            - workExperience
+            - education
+            - certifications
+            - competitiveProfiles.
+    
+            Ensure competitiveProfiles includes any and all references to platforms such as:
+            - LeetCode
+            - HackerRank
+            - Kaggle
+            - Codeforces
+            - CodeChef. 
+    
+            If a profile includes Rating, Rank, Score, or a link, include it as well. 
+    
+            Do not include any markdown formatting in your output. 
+            
+            If the field is not mentioned under education, go over the workExperience to determine the field of work of the individual and put it under field in education.`
           },
           {
             role: "user",
@@ -49,9 +102,10 @@ async function parseResume(filePath, userId) {
         }
       }
     );
+    
+   
 
     let jsonResponse = response.data.choices[0].message.content;
-
     // Remove markdown formatting if present
     jsonResponse = jsonResponse.replace(/```json\s?/, '').replace(/```/g, '').trim();
 
