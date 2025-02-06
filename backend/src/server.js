@@ -20,7 +20,7 @@ const express = require('express');
 const multer = require('multer');
 const cors = require('cors');
 const { parseResume } = require('./services/resumeParser');
-const { evaluateATS } = require('./services/atsEvaluator');
+const { evaluateATS,evaluateATSD, evaluateATSL, evaluateRoleBasedATS } = require('./services/atsEvaluator');
 
 const app = express();
 const port = 5000;
@@ -75,7 +75,7 @@ app.post('/api/resume/upload', upload.single('resume'), async (req, res) => {
     let atsEvaluation = null;
    
     if (req.body.atsRole) {
-      atsEvaluation = await evaluateATS(parsedResume.parsedData, req.body.atsRole);
+      atsEvaluation = await evaluateRoleBasedATS(parsedResume.parsedData, req.body.atsRole);
       parsedResume.atsEvaluation = atsEvaluation;
             await parsedResume.save();
     }
