@@ -45,9 +45,6 @@ const ResumeUpload = () => {
       setLoading(false);
     }
   };
-
-  // When a result is received, manually sum the individual skill points from the breakdown,
-  // then send these details to the backend for OpenAI calculation verification.
   useEffect(() => {
     const validateCalculation = async () => {
       if (result && result.atsEvaluation && result.atsEvaluation.breakdown) {
