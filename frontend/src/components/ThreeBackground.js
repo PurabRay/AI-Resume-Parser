@@ -8,8 +8,6 @@ const ThreeBackground = () => {
   
     const mountElement = containerRef.current;
     if (!mountElement) return;
-
-    // Set up scene, camera, and renderer
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
       75,
