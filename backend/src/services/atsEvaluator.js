@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const KRUTRIM_API_KEY = process.env.KRUTRIM_API_KEY.trim(); // Ensure this is set in your environment variables
+const KRUTRIM_API_KEY = process.env.KRUTRIM_API_KEY.trim(); 
 const KRUTRIM_API_URL = 'https://cloud.olakrutrim.com/v1/chat/completions';
 
 async function evaluateATSL(parsedData, role) {
@@ -65,7 +65,6 @@ Format your response as a JSON object with this structure:
     );
 
     let responseText = response.data.choices[0].message.content;
-    // Remove any markdown formatting that might be present
     responseText = responseText.replace(/```json\s?/, '').replace(/```/g, '').trim();
 
     const atsEvaluation = JSON.parse(responseText);
@@ -135,7 +134,7 @@ Evaluate the resume and provide:
     }
   }
 }
-`; // The exact prompt you provided for Detectives remains unchanged
+`; 
 
     const response = await axios.post(
       KRUTRIM_API_URL,
@@ -265,7 +264,7 @@ Do not include any markdown formatting in your output.
 
 - Provide learning resources for each missing core skill with 2-3 resource entries each under basic, intermediate, and advanced categories.
 
-`; // The exact prompt for the general ATS evaluation remains unchanged
+`; 
 
     const response = await axios.post(
       KRUTRIM_API_URL,
