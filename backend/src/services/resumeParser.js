@@ -7,9 +7,9 @@ const Resume = require('../models/Resume');
 const Job = require('../models/Job');
 const KRUTRIM_API_KEY = process.env.KRUTRIM_API_KEY.trim(); // Ensure this is set in your environment variables
 const KRUTRIM_API_URL = 'https://cloud.olakrutrim.com/v1/chat/completions'
-// Initialize OpenAI with the API key directly from process.env
+
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY.trim() // Remove any extra whitespace
+  apiKey: process.env.OPENAI_API_KEY.trim() 
 });
 
 async function parseResume(filePath, userId) {
@@ -26,7 +26,7 @@ async function parseResume(filePath, userId) {
       text = result.value;
     }
 
-    // Use OpenAI to extract structured information
+   
     const response = await axios.post(
       KRUTRIM_API_URL,
       {
@@ -106,12 +106,12 @@ async function parseResume(filePath, userId) {
    
 
     let jsonResponse = response.data.choices[0].message.content;
-    // Remove markdown formatting if present
+   
     jsonResponse = jsonResponse.replace(/```json\s?/, '').replace(/```/g, '').trim();
 
     const parsedData = JSON.parse(jsonResponse);
     
-    // Build resume data and include userId only if provided
+    
     const resumeData = {
       parsedData,
       originalFileName: filePath.split('/').pop(),
@@ -130,7 +130,6 @@ async function parseResume(filePath, userId) {
     console.error('Error in parseResume:', error);
     throw new Error(`Error parsing resume: ${error.message}`);
   } finally {
-    // Clean up uploaded file
     if (fs.existsSync(filePath)) {
       fs.unlinkSync(filePath);
     }
