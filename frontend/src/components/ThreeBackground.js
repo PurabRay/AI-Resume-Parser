@@ -5,7 +5,7 @@ const ThreeBackground = () => {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    // Store the mount element so the cleanup can safely remove the renderer's element.
+  
     const mountElement = containerRef.current;
     if (!mountElement) return;
 
@@ -45,10 +45,8 @@ const ThreeBackground = () => {
     const stars = new THREE.Points(starsGeometry, starsMaterial);
     scene.add(stars);
 
-    // Position the camera for a good view of the starfield
+    
     camera.position.z = 30;
-
-    // Animation loop: slow rotation of the stars and subtle camera movement
     let time = 0;
     const animate = () => {
       time += 0.001;
@@ -61,8 +59,6 @@ const ThreeBackground = () => {
       requestAnimationFrame(animate);
     };
     animate();
-
-    // Handle window resize
     const handleResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
@@ -70,8 +66,6 @@ const ThreeBackground = () => {
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     };
     window.addEventListener('resize', handleResize);
-
-    // Cleanup: remove the renderer's DOM element safely.
     return () => {
       window.removeEventListener('resize', handleResize);
       if (mountElement && renderer.domElement && mountElement.contains(renderer.domElement)) {
