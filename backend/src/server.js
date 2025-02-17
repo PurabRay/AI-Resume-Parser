@@ -1,8 +1,7 @@
 require('dotenv').config();
 
-// Add MongoDB connection using Mongoose
-const mongoose = require('mongoose');
 
+const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => {
@@ -10,7 +9,7 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
     process.exit(1);
   });
 
-// Add this check
+
 if (!process.env.OPENAI_API_KEY) {
   console.error('OPENAI_API_KEY is not set in environment variables');
   process.exit(1);
@@ -24,16 +23,12 @@ const { evaluateATS,evaluateATSD, evaluateATSL, evaluateRoleBasedATS } = require
 
 const app = express();
 const port = 5000;
-
-// Enable CORS
 app.use(cors({
   origin: 'http://localhost:3000',
   credentials: true
 }));
 
 app.use(express.json());
-
-// Configure multer for file uploads
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'uploads/')
@@ -42,7 +37,6 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + '-' + file.originalname)
   }
 });
-
 const upload = multer({ 
   storage: storage,
   fileFilter: (req, file, cb) => {
@@ -54,24 +48,17 @@ const upload = multer({
     }
   }
 });
-
-// Create uploads directory if it doesn't exist
 const fs = require('fs');
 if (!fs.existsSync('uploads')) {
   fs.mkdirSync('uploads');
 }
-
-// Resume upload endpoint
 app.post('/api/resume/upload', upload.single('resume'), async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ error: 'No file uploaded' });
     }
-
-    // Parse the resume using our existing service
-    const parsedResume = await parseResume(req.file.path);
-    
-    // Check for ATS role from form-data; it is assumed to be passed as "atsRole"
+ const parsedResume = await parseResume(req.file.path);
+     //Checking for ATS role from form-data; it is assumed to be passed as "atsRole"
     let atsEvaluation = null;
    
     if (req.body.atsRole) {
