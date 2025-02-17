@@ -52,7 +52,7 @@ const ResumeUpload = () => {
           (sum, curr) => sum + Number(curr.assignedPoints),
           0
         );
-        // Update the atsScore to be the manual sum
+        
         setResult(prevResult => ({
           ...prevResult,
           atsEvaluation: {
