@@ -58,7 +58,7 @@ app.post('/api/resume/upload', upload.single('resume'), async (req, res) => {
       return res.status(400).json({ error: 'No file uploaded' });
     }
  const parsedResume = await parseResume(req.file.path);
-     //Checking for ATS role from form-data; it is assumed to be passed as "atsRole"
+     //Checking forATS role from form-data;it is assumed to be passed as'atsRole'
     let atsEvaluation = null;
    
     if (req.body.atsRole) {
