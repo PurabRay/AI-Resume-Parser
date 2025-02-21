@@ -5,7 +5,7 @@ const axios=require('axios')
 const { OpenAI } = require('openai');
 const Resume = require('../models/Resume');
 const Job = require('../models/Job');
-const KRUTRIM_API_KEY = process.env.KRUTRIM_API_KEY.trim(); // Ensure this is set in your environment variables
+const KRUTRIM_API_KEY = process.env.KRUTRIM_API_KEY.trim(); 
 const KRUTRIM_API_URL = 'https://cloud.olakrutrim.com/v1/chat/completions'
 
 const openai = new OpenAI({
