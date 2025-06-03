@@ -67,13 +67,11 @@ app.post('/api/resume/upload', upload.single('resume'), async (req, res) => {
             await parsedResume.save();
     }
 
-    res.json({ 
-      message: 'Resume uploaded successfully',
-      parsedData: parsedResume,
-      atsEvaluation: atsEvaluation,
-      parsedData: parsedResume,
-      atsEvaluation: atsEvaluation
-    });
+  res.json({
+    message: 'Resume uploaded successfully',
+    parsedData: parsedResume.parsedData,
+    atsEvaluation: atsEvaluation
+  });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
